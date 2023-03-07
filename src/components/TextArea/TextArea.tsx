@@ -1,6 +1,6 @@
 import { ChangeEvent, forwardRef } from 'react';
 
-import './textAreaStyles.scss';
+import { StyledTextArea } from './textArea.style';
 import { ITextAreaProps } from './textArea.interface';
 
 export const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
@@ -12,7 +12,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
     };
 
     return (
-      <textarea
+      <StyledTextArea
         maxLength={300}
         rows={5}
         id={id}

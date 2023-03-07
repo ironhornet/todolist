@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Button } from 'rsuite';
 
 import { deleteTodo, updateTodo } from '../../store/features/todo/todo.slice';
@@ -17,6 +17,7 @@ export const TodoItem: FC<ITodoElementProps> = (props) => {
   const dispatch = useAppDispatch();
 
   const handleDone = (todo: ITodoDto) => {
+    setIsEditing(false)
     dispatch(updateTodo(todo));
   };
   const handleEdit = () => {
@@ -42,6 +43,7 @@ export const TodoItem: FC<ITodoElementProps> = (props) => {
   const handleTitleChange = (value: string) => {
     if (titleValue.length <= 80) setTitleValue(value);
   };
+  
 
   return (
     <li>

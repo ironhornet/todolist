@@ -1,13 +1,13 @@
 import { FC } from 'react';
-import { ICheckboxProps } from './checkbox.interface';
 
-import './checkbox.scss';
+import { StyledDiv } from './checkbox.style';
+import { ICheckboxProps } from './checkbox.interface';
 
 export const Checkbox: FC<ICheckboxProps> = (props) => {
   const { onChange, checked, id } = props;
 
   return (
-    <div className='checkboxWrapper'>
+    <StyledDiv>
       <input
         type='checkbox'
         id={id}
@@ -19,6 +19,6 @@ export const Checkbox: FC<ICheckboxProps> = (props) => {
           <path d='M5 30 L 20 45 L 45 5'></path>
         </svg>
       </label>
-    </div>
+    </StyledDiv>
   );
 };

@@ -1,3 +1,5 @@
+@import 'rsuite/dist/rsuite.css';
+
 * {
   box-sizing: border-box;
 }
@@ -26,6 +28,11 @@ ul {
 }
 a {
   text-decoration: none;
+}
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
 
 input[type='number']::-webkit-outer-spin-button,

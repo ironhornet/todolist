@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/babel-plugin": "^11.10.6",
+    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@redux-saga/core": "^1.2.2",
     "@reduxjs/toolkit": "^1.9.2",

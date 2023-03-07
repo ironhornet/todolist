@@ -1,11 +1,16 @@
 import { useFormik } from 'formik';
-import { Button, Form, Input } from 'rsuite';
+import { Button, FlexboxGrid, Form } from 'rsuite';
 
-import './addTodoForm.scss';
 import { validationSchema } from './validationSchema';
 import { IAddTodoFormProps, IFormValues } from './addTodoForm.interface';
 import { TextArea } from '../TextArea/TextArea';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
+import styled from '@emotion/styled';
+import {
+  formStyles,
+  StyledError,
+  StyledSubmitButton,
+} from './addTodoForm.style';
 
 export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
   const { handleCreateTodo, onModalClose } = props;
@@ -21,8 +26,16 @@ export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
       validationSchema,
     });
 
+  const StyledForm: any = useMemo(
+    () =>
+      styled(Form)`
+        ${formStyles}
+      `,
+    []
+  );
+
   return (
-    <Form>
+    <StyledForm>
       <Form.Group controlId='title'>
         <Form.ControlLabel>Todo Title</Form.ControlLabel>
         <Form.Control
@@ -32,9 +45,7 @@ export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
           onChange={(newValue) => setFieldValue('title', newValue)}
           value={values.title}
         />
-        {errors.title && (
-          <Form.HelpText className='errorText'>{errors.title}</Form.HelpText>
-        )}
+        {errors.title && <StyledError color='red'>{errors.title}</StyledError>}
       </Form.Group>
 
       <Form.Group controlId='content'>
@@ -44,16 +55,13 @@ export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
         <TextArea id='content' getFieldProps={getFieldProps} />
       </Form.Group>
 
-      <div className='buttonBox'>
-        <Button
-          className='formSubmitBtn'
-          onClick={submitForm}
-          appearance='primary'
-        >
+      <FlexboxGrid>
+        <StyledSubmitButton onClick={submitForm} appearance='primary'>
           Add Todo
-        </Button>
+        </StyledSubmitButton>
+
         <Button onClick={() => onModalClose(false)}>Cancel</Button>
-      </div>
-    </Form>
+      </FlexboxGrid>
+    </StyledForm>
   );
 };

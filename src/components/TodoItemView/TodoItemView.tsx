@@ -1,8 +1,15 @@
 import { FC } from 'react';
 import { Input } from 'rsuite';
-import clsx from 'clsx';
+import styled from '@emotion/styled';
 
-import './todoItemView.scss';
+import {
+  styldContainerStylee,
+  StyledButton,
+  StyledContentWrapper,
+  StyledText,
+  StyledTextWrapper,
+  StyledTitle,
+} from './todoItemView.style';
 import { ITodoItemViewProps } from './todoItemView.interface';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { ReactComponent as PencilSvg } from '../../assets/svg/pencil.svg';
@@ -25,22 +32,29 @@ export const TodoItemView: FC<ITodoItemViewProps> = (props) => {
     handleSave,
   } = props;
 
-  const styles = clsx('todoContainer', { todoCompleted: todo.done });
-
   const handleCheckboxChange = (checked: boolean) => {
     handleDone({ ...todo, done: checked });
   };
 
+  const StyledTodoContainer = styled.article`
+    ${styldContainerStylee}
+    ${todo.done &&
+    `
+  text-decoration: line-through;
+  opacity: 0.6;
+  `}
+  `;
+
   return (
-    <article className={styles}>
-      <div className='todoContentWrapper'>
+    <StyledTodoContainer>
+      <StyledContentWrapper>
         <Checkbox
           checked={todo.done}
           onChange={handleCheckboxChange}
           id={todo.id}
         />
 
-        <div className='textWrapper'>
+        <StyledTextWrapper>
           {isEditing && (
             <Input value={titleValue} onChange={handleTitleChange} />
           )}
@@ -53,38 +67,32 @@ export const TodoItemView: FC<ITodoItemViewProps> = (props) => {
             />
           )}
 
-          {!isEditing && <h3 className='title'>{todo.title}</h3>}
-          {!isEditing && <p className='text'>{todo.content}</p>}
-        </div>
-      </div>
+          {!isEditing && <StyledTitle>{todo.title}</StyledTitle>}
+          {!isEditing && <StyledText>{todo.content}</StyledText>}
+        </StyledTextWrapper>
+      </StyledContentWrapper>
 
-      <div className='buttons'>
-        {!isEditing && (
-          <>
-            <button
-              className='btn editBtn'
-              onClick={handleEdit}
-              disabled={todo.done}
-            >
-              <PencilSvg width={30} height={30} cursor='pointer' />
-            </button>
-            <button className='btn' onClick={() => manageModal(true)}>
-              <BinSvg width={30} height={30} cursor='pointer' />
-            </button>
-          </>
-        )}
+      {!isEditing && (
+        <>
+          <StyledButton onClick={handleEdit} disabled={todo.done}>
+            <PencilSvg width={30} height={30} cursor='pointer' />
+          </StyledButton>
+          <button onClick={() => manageModal(true)}>
+            <BinSvg width={30} height={30} cursor='pointer' />
+          </button>
+        </>
+      )}
 
-        {isEditing && (
-          <>
-            <button className='btn saveBtn' onClick={() => handleSave(todo)}>
-              <SaveSvg width={30} height={30} cursor='pointer' />
-            </button>
-            <button className='btn' onClick={handleEdit}>
-              <CancelSvg width={30} height={30} cursor='pointer' />
-            </button>
-          </>
-        )}
-      </div>
-    </article>
+      {isEditing && (
+        <>
+          <StyledButton onClick={() => handleSave(todo)}>
+            <SaveSvg width={30} height={30} cursor='pointer' />
+          </StyledButton>
+          <button onClick={handleEdit}>
+            <CancelSvg width={30} height={30} cursor='pointer' />
+          </button>
+        </>
+      )}
+    </StyledTodoContainer>
   );
 };
