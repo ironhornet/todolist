@@ -1,4 +1,6 @@
-.textArea {
+import styled from '@emotion/styled';
+
+export const StyledTextArea = styled.textarea`
   width: 100%;
   border-radius: 6px;
   padding: 7px 11px;
@@ -17,4 +19,4 @@
     outline: 3px solid rgba(52, 152, 255, 0.25);
     border-color: #3498ff;
   }
-}
+`;

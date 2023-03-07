@@ -1,3 +1,5 @@
+@import 'rsuite/dist/rsuite.css';
+
 * {
   box-sizing: border-box;
 }
@@ -27,6 +29,11 @@ ul {
 a {
   text-decoration: none;
 }
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
 
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
@@ -34,5 +41,5 @@ input[type='number']::-webkit-inner-spin-button {
   margin: 0;
 }
 input[type='number'] {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield; 
 }

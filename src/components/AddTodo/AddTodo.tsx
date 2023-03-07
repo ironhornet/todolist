@@ -1,8 +1,7 @@
 import { FC, useState } from 'react';
-import { Button } from 'rsuite';
 import { v4 as uuidv4 } from 'uuid';
 
-import './addTodo.scss';
+import { AddTodoButton } from './addTodo.style';
 import { addTodo } from '../../store/features/todo/todo.slice';
 import { useAppDispatch } from '../../store/hooks/useAppDispatch';
 import { AddTodoForm } from '../AddTodoForm/AddTodoForm';
@@ -29,14 +28,13 @@ export const AddTodo: FC = () => {
 
   return (
     <>
-      <Button
-        className='addTodoBtn'
+      <AddTodoButton
         size='lg'
         appearance='primary'
         onClick={() => manageModal(true)}
       >
         Add new Todo
-      </Button>
+      </AddTodoButton>
 
       <ModalPopup title='Add new todo' open={isOpen} onChange={manageModal}>
         <AddTodoForm
