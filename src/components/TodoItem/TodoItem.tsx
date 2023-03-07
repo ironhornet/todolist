@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useState } from 'react';
 import { Button } from 'rsuite';
 
 import { deleteTodo, updateTodo } from '../../store/features/todo/todo.slice';

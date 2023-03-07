@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Input } from 'rsuite';
 import styled from '@emotion/styled';
 
@@ -36,14 +36,13 @@ export const TodoItemView: FC<ITodoItemViewProps> = (props) => {
     handleDone({ ...todo, done: checked });
   };
 
-  const StyledTodoContainer = styled.article`
-    ${styldContainerStylee}
-    ${todo.done &&
-    `
-  text-decoration: line-through;
-  opacity: 0.6;
-  `}
-  `;
+  const StyledTodoContainer = useMemo(
+    () => styled.article`
+      ${styldContainerStylee}
+      ${todo.done && `text-decoration: line-through; opacity: 0.6;`}
+    `,
+    [] // eslint-disable-line
+  );
 
   return (
     <StyledTodoContainer>

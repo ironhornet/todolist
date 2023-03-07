@@ -16,7 +16,6 @@ export const ModalPopup: FC <IModalProps> = (props) => {
       backdrop
     >
       <Modal.Title >{title}</Modal.Title>
-
       {children}
     </StyledModal>
   );

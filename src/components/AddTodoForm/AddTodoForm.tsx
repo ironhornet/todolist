@@ -1,16 +1,16 @@
 import { useFormik } from 'formik';
 import { Button, FlexboxGrid, Form } from 'rsuite';
 
-import { validationSchema } from './validationSchema';
-import { IAddTodoFormProps, IFormValues } from './addTodoForm.interface';
-import { TextArea } from '../TextArea/TextArea';
-import { FC, useMemo } from 'react';
-import styled from '@emotion/styled';
 import {
   formStyles,
   StyledError,
   StyledSubmitButton,
 } from './addTodoForm.style';
+import { validationSchema } from './validationSchema';
+import { IAddTodoFormProps, IFormValues } from './addTodoForm.interface';
+import { TextArea } from '../TextArea/TextArea';
+import { FC, useMemo } from 'react';
+import styled from '@emotion/styled';
 
 export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
   const { handleCreateTodo, onModalClose } = props;
@@ -35,7 +35,7 @@ export const AddTodoForm: FC<IAddTodoFormProps> = (props) => {
   );
 
   return (
-    <StyledForm>
+    <StyledForm >
       <Form.Group controlId='title'>
         <Form.ControlLabel>Todo Title</Form.ControlLabel>
         <Form.Control
