@@ -41,7 +41,7 @@ export const TodoItemView: FC<ITodoItemViewProps> = (props) => {
       ${styldContainerStylee}
       ${todo.done && `text-decoration: line-through; opacity: 0.6;`}
     `,
-    [] // eslint-disable-line
+    [todo.done]
   );
 
   return (
